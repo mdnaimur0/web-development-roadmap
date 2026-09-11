@@ -1,46 +1,71 @@
-# Astro Starter Kit: Basics
+# Web Dev Roadmap
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+An interactive learning roadmap for Bangladeshi school students. Track your progress from beginner to full-stack developer across 8 phases of curated Bengali and English resources.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Features
 
-## 🚀 Project Structure
+- **8 progressive phases** from computational thinking to portfolio polish
+- **Gamified levels**: Noob, Beginner, Apprentice, Intermediate, Advanced, Expert, Master, Legend
+- **Progress tracking** with IndexedDB (localStorage fallback)
+- **Bilingual content** with Bangla titles and resource links
+- **SMART goals** for each phase with measurable milestones
+- **Mascot characters** (Pandi, Otter, Piglet) guiding learners through their journey
+- **Badge collection** rewarding phase completion
 
-Inside of your Astro project, you'll see the following folders and files:
+## Tech Stack
+
+- [Astro](https://astro.build) — static site generation
+- [React](https://react.dev) — interactive UI components
+- [Tailwind CSS v4](https://tailwindcss.com) — styling with Duolingo-inspired design tokens
+- [idb](https://github.com/nicedoc/idb) — IndexedDB wrapper for progress storage
+
+## Project Structure
 
 ```text
 /
 ├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+│   └── mascots/          # SVG mascot characters
+├── src/
+│   ├── components/
+│   │   ├── content/      # PhaseCard, PhaseDetail, TopicRow, etc.
+│   │   ├── feedback/     # ErrorBoundary, StorageWarning
+│   │   ├── layout/       # Navbar, Footer, HeroSection, ProgressDashboard
+│   │   └── ui/           # Badge, Button, ProgressBar, LoadingSpinner
+│   ├── constants/        # Mascot configuration
+│   ├── data/             # Curriculum data (9 phases, 40+ topics)
+│   ├── layouts/          # Root layout with progress provider
+│   ├── lib/              # Progress tracking store and storage layer
+│   ├── pages/            # Route pages (home, progress, phase detail)
+│   ├── styles/           # Global CSS with Tailwind theme
+│   └── types/            # TypeScript interfaces
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Commands
 
-## 🧞 Commands
+| Command | Action |
+| :--- | :--- |
+| `pnpm install` | Install dependencies |
+| `pnpm dev` | Start dev server at `localhost:4321` |
+| `pnpm build` | Build production site to `./dist/` |
+| `pnpm preview` | Preview build locally |
 
-All commands are run from the root of the project, from a terminal:
+## Getting Started
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+```sh
+pnpm install
+pnpm dev
+```
 
-## 👀 Want to learn more?
+Open [http://localhost:4321](http://localhost:4321) to view the roadmap.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## How It Works
+
+1. **Browse phases** on the home page — each phase covers a specific skill area
+2. **Click into a phase** to see topics with links to Bengali and English video courses
+3. **Check off topics** as you complete them — progress saves automatically
+4. **Track your journey** on the progress page with an SVG chart and badge collection
+
+## License
+
+MIT

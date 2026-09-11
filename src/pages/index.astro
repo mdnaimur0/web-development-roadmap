@@ -1,11 +1,65 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { HeroSection } from '../components/layout/HeroSection';
+import { PhaseCard } from '../components/content/PhaseCard';
+import { curriculum } from '../data/curriculum';
+import { MascotDisplay } from '../components/content/MascotDisplay';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={curriculum.meta.title}>
+  <HeroSection
+    title={curriculum.meta.title}
+    banglaTitle={curriculum.meta.banglaTitle}
+    subtitle={curriculum.meta.description}
+    mascotSrc="/mascots/pandi-whiteboard.svg"
+    ctaText="START LEARNING"
+    ctaHref="/phase/phase-0"
+  />
+
+  <div class="max-w-6xl mx-auto px-4">
+    <section class="py-12">
+      <h2 class="heading-green text-center mb-8">Learning Path</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {curriculum.phases.map((phase) => (
+          <PhaseCard client:load phase={phase} />
+        ))}
+      </div>
+    </section>
+
+    <section class="py-12 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+      <div class="shrink-0">
+        <MascotDisplay src="/mascots/otter-light-work.svg" alt="Otter mascot" size="lg" />
+      </div>
+      <div class="text-center md:text-left">
+        <h2 class="text-heading-md text-navy mb-2">You Can Do This!</h2>
+        <p class="text-body">
+          Every expert was once a beginner. Start with Phase 0, learn at your own pace, and build real projects along the way.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12 bg-owl-soft/20 rounded-lg px-6 mb-12">
+      <h2 class="heading-green text-center mb-6">Quick Stats</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <div class="text-display-lg text-navy font-bold">{curriculum.meta.totalPhases}</div>
+          <div class="text-body">Phases</div>
+        </div>
+        <div>
+          <div class="text-display-lg text-navy font-bold">
+            {curriculum.phases.reduce((sum, p) => sum + p.topics.length, 0)}
+          </div>
+          <div class="text-body">Topics</div>
+        </div>
+        <div>
+          <div class="text-display-lg text-navy font-bold">Confident</div>
+          <div class="text-body">Target</div>
+        </div>
+        <div>
+          <div class="text-display-lg text-navy font-bold">∞</div>
+          <div class="text-body">Potential</div>
+        </div>
+      </div>
+    </section>
+  </div>
 </Layout>

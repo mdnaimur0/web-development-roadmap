@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ProgressDashboard } from '../components/layout/ProgressDashboard';
+---
+
+<Layout title="Progress — Web Dev Roadmap">
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <ProgressDashboard client:load />
+  </div>
+</Layout>

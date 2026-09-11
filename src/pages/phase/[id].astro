@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { curriculum } from '../../data/curriculum';
+import { PhaseDetail } from '../../components/content/PhaseDetail';
+
+export function getStaticPaths() {
+  return curriculum.phases.map(phase => ({
+    params: { id: phase.id }
+  }));
+}
+
+const { id } = Astro.params;
+
+const phase = curriculum.phases.find(p => p.id === id);
+
+if (!phase) {
+  return Astro.redirect('/404');
+}
+
+const currentIndex = curriculum.phases.findIndex(p => p.id === id);
+const prevPhaseId = currentIndex > 0 ? curriculum.phases[currentIndex - 1].id : undefined;
+const nextPhaseId = currentIndex < curriculum.phases.length - 1 ? curriculum.phases[currentIndex + 1].id : undefined;
+---
+
+<Layout title={`${phase.title} — Web Dev Roadmap`}>
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <PhaseDetail client:load phase={phase} prevPhaseId={prevPhaseId} nextPhaseId={nextPhaseId} />
+  </div>
+</Layout>

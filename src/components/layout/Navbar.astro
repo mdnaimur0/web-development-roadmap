@@ -1,0 +1,26 @@
+---
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/progress', label: 'Progress' }
+]
+---
+
+<nav class="bg-canvas border-b border-body-soft/20 px-4 py-3" aria-label="Main navigation">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2" aria-label="Web Dev Roadmap home">
+      <span class="text-2xl" aria-hidden="true">🐼</span>
+      <span class="font-display font-bold text-navy text-lg hidden sm:inline">Web Dev Roadmap</span>
+    </a>
+    <div class="flex items-center gap-4" role="navigation" aria-label="Site navigation">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class="text-body-strong font-bold hover:text-owl transition-colors text-body-sm"
+          aria-current={Astro.url.pathname === link.href ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>

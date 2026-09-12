@@ -42,21 +42,21 @@ import { MascotDisplay } from '../components/content/MascotDisplay';
       <h2 class="heading-green text-center mb-6">Quick Stats</h2>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
         <div>
-          <div class="text-display-lg text-navy font-bold">{curriculum.meta.totalPhases}</div>
+          <div class="text-display-md text-navy font-bold">{curriculum.meta.totalPhases}</div>
           <div class="text-body">Phases</div>
         </div>
         <div>
-          <div class="text-display-lg text-navy font-bold">
+          <div class="text-display-sm md:text-display-md text-navy font-bold">
             {curriculum.phases.reduce((sum, p) => sum + p.topics.length, 0)}
           </div>
           <div class="text-body">Topics</div>
         </div>
         <div>
-          <div class="text-display-lg text-navy font-bold">Confident</div>
+          <div class="text-display-sm md:text-display-md text-navy font-bold">Confident</div>
           <div class="text-body">Target</div>
         </div>
         <div>
-          <div class="text-display-lg text-navy font-bold">∞</div>
+          <div class="text-display-sm md:text-display-md text-navy font-bold">∞</div>
           <div class="text-body">Potential</div>
         </div>
       </div>

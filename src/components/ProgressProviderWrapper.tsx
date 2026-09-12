@@ -33,16 +33,18 @@ function ErrorBanner() {
 
 export function ProgressProviderWrapper({
   children,
+  className,
 }: {
   children: React.ReactNode;
+  className?: string;
 }) {
   return (
-    <>
+    <div className={className}>
       <div className="sticky top-0 left-0 right-0 z-50">
         <StorageWarningBanner />
         <ErrorBanner />
       </div>
       {children}
-    </>
+    </div>
   );
 }

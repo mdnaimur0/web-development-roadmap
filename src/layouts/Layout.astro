@@ -22,9 +22,9 @@ const { title = "Web Dev Roadmap" } = Astro.props;
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <ProgressProviderWrapper client:load>
+    <ProgressProviderWrapper client:load className="min-h-screen flex flex-col">
       <Navbar />
-      <main id="main-content">
+      <main id="main-content" class="grow w-full max-w-6xl mx-auto px-4 py-8">
         <slot />
       </main>
       <Footer />
